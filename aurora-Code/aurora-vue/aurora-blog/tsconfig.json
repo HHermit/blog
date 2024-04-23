@@ -1,0 +1,64 @@
+{
+  // 编译器选项配置
+  "compilerOptions": {
+    // 目标ECMAScript版本，本例中设置为"esnext"以支持最新的ES特性
+    "target": "esnext",
+    
+    // 指定模块系统，此处使用"esnext"表示使用ES6及以上版本的模块语法（如import/export）
+    "module": "esnext",
+
+    // 启用严格模式，在编译阶段执行类型检查、变量作用域限制等，提高代码质量
+    "strict": true,
+
+    // 设置JSX处理方式，"preserve"表示保留原始JSX语法，由其他工具（如Babel）进一步转换
+    "jsx": "preserve",
+
+    // 指定模块解析策略，"node"表示遵循Node.js模块解析规则
+    "moduleResolution": "node",
+
+    // 是否跳过类型声明文件（.d.ts）的检查，设为true可加快编译速度，但可能忽略潜在类型错误
+    "skipLibCheck": true,
+
+    // 为CommonJS与ES模块之间提供更好的互操作性，允许在ES模块环境中按需使用require()调用
+    "esModuleInterop": true,
+
+    // 允许从默认导出的模块中按需引入默认成员，即使该模块未明确声明default export
+    "allowSyntheticDefaultImports": true,
+
+    // 强制所有引用的文件名（包括扩展名）在大小写上保持一致，防止因大小写不一致导致的引用错误
+    "forceConsistentCasingInFileNames": true,
+
+    // 使用Object.defineProperty来定义类字段，确保它们遵循ES规范的行为（如初始化顺序、访问器等）
+    "useDefineForClassFields": true,
+
+    // 生成Source Map文件，便于在浏览器中调试时将源代码映射到编译后的代码
+    "sourceMap": true,
+
+    // 基础URL，用于解析非绝对路径的模块引用。本例中设为"."，表示以当前目录作为基础路径
+    "baseUrl": ".",
+
+    // 指定需要包含的类型声明文件或包，例如这里包含了"webpack-env"以便于在项目中使用Webpack相关类型
+    "types": ["webpack-env"],
+
+    // 配置路径别名，方便引用模块时使用简短路径。本例中设置了"@/*"指向"src/*"
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    // 指定要引入的标准库，如"esnext"、"dom"等，确保编译过程中能正确识别并处理相关API
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+
+  // 包含和排除文件的配置
+  "include": [
+    // 指定需要编译的文件及文件夹，使用glob模式匹配。本例中包含src、tests目录下所有.ts/.tsx和.vue文件
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+
+  // 排除不需要编译的文件及文件夹，本例中排除node_modules目录以避免编译依赖库
+  "exclude": ["node_modules"]
+}
